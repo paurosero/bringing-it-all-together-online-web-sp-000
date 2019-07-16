@@ -44,11 +44,11 @@ class Dog
   end
   
   def self.new_from_db(row)
-    new_dog = self.new(id: id, name: name, breed: breed)
+    
     new_dog.id = row[0]
     new_dog.name = row[1]
     new_dog.breed = row[2]
-    new_dog
+    new_dog = self.new(id: id, name: name, breed: breed)
   end
   
   def self.find_by_id
