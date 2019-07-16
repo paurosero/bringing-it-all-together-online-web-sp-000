@@ -17,7 +17,7 @@ class Dog
   end
   
   def self.drop_table
-    sql = 
+   # sql = 
   end
   
   def save
@@ -26,14 +26,13 @@ class Dog
     VALUES (?, ?)
     SQL
     DB[:conn].execute(sql, self.name, self.breed)
-    
+    @id = DB[:conn].execute("SELECT last_insert_rowid() FROM dogs")[0][0]
   end
   
   def self.create(attribute_hash)
     dog = Dog.new(attribute_hash)
     dog.save
     dog
-    
   end
   
   def self.new_from_db
